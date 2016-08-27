@@ -53,7 +53,7 @@ export function run(worker) {
   app.post('/graphql', jwt({secret: process.env.JWT_SECRET, credentialsRequired: false}), httpGraphQLHandler);
 
   //test
-  app.get('/dishes', function(req, res){
+  app.post('/dishes', function(req, res){
     res.json(
       {
           "dishes": [
