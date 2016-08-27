@@ -52,6 +52,53 @@ export function run(worker) {
   // HTTP GraphQL endpoint
   app.post('/graphql', jwt({secret: process.env.JWT_SECRET, credentialsRequired: false}), httpGraphQLHandler);
 
+  //test
+  app.get('/dishes', function(req, res){
+    res.json(
+      {
+          "dishes": [
+              {
+                  "UUID": "12d05e5b-662d-4b39-b4f6-41fc55ccc226",
+                  "name": "dishName1",
+                  "description": "dishDescription1",
+                  "basePrice": 3000,
+                  "lat": 35.157692,
+                  "lon": 136.951809,
+                  "imageURL": "http://i.cbc.ca/1.3385054.1452202073!/cpImage/httpImage/image.jpg_gen/derivatives/original_620/food-grocery-costs-recipes-201512.jpg",
+                  "rating": 4.6,
+                  "reviews": [
+                      {
+                          "authorID": "820c6c0e-68ec-11e6-8b77-86f30ca893d3",
+                          "contents": "This dish was delicious"
+                      },{
+                          "authorID": "820c6c0e-68ec-11e6-8b77-86f30ca893d4",
+                          "contents": "This dish was so delicious"
+                      }
+                  ]
+              },{
+                  "UUID": "12d05e5b-662d-4b39-b4f6-41fc55ccc227",
+                  "name": "dishName2",
+                  "description": "dishDescription2",
+                  "basePrice": 2800,
+                  "lat": 35.157792,
+                  "lon": 136.951909,
+                  "imageURL": "http://ic4-a.dena.ne.jp/mi/gr/114/image.rakuten.co.jp/asian-fashion/cabinet/wj/wj-0062-04.jpg",
+                  "rating": 4.1,
+                  "reviews": [
+                      {
+                          "authorID": "820c6c0e-68ec-11e6-8b77-86f30ca893d3",
+                          "contents": "This dish was delicious"
+                      },{
+                          "authorID": "820c6c0e-68ec-11e6-8b77-86f30ca893d4",
+                          "contents": "This dish was so delicious"
+                      }
+                  ]
+              }
+          ]
+      }
+    );
+  });
+
   // server-side rendering
   app.get('*', createSSR);
 
